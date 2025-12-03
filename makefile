@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Wno-unused-parameter -I.
-TARGET = my_program
+TARGET = program
 OBJ_DIR = obj
 
 SRCS = main.cpp \
@@ -11,7 +11,6 @@ SRCS = main.cpp \
        task5.cpp \
        task6.cpp \
        task7.cpp \
-       hashsetN2.cpp \
        stackN1.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))

@@ -1,16 +1,32 @@
 #include <iostream>
 #include <vector>
-#include "pyramid.h"
-#include "task3.h"
+#include <set>
+#include "setutils.h"
 
 void runTask3() {
-    int n;
-    std::cout << "Введите N (число блоков): ";
-    std::cin >> n;
-    std::vector<Block> blocks(n);
+    std::cout << "=== Задание 3: Максимальное пересечение множеств ===" << std::endl;
+    std::cout << "Введите количество подмножеств: ";
+    int n; std::cin >> n;
+    std::vector<std::set<int>> sets(n);
+
     for (int i = 0; i < n; ++i) {
-        std::cin >> blocks[i].w >> blocks[i].h;
+        std::cout << "Множество " << i << " (кол-во элементов, затем элементы): ";
+        int k; std::cin >> k;
+        for (int j = 0; j < k; ++j) {
+            int x; std::cin >> x;
+            sets[i].insert(x);
+        }
     }
-    std::cout << "Максимальная высота пирамиды: "
-              << maxPyramidHeight(blocks) << "\n";
+
+    auto res = findMaxIntersection(sets);
+    auto idx = res.first;
+    std::size_t cnt = res.second;
+
+    if (idx.first == -1) {
+        std::cout << "Недостаточно множеств.\n";
+        return;
+    }
+    std::cout << "Множества с максимальным пересечением: "
+              << idx.first << " и " << idx.second
+              << ", размер пересечения = " << cnt << "\n";
 }

@@ -1,15 +1,16 @@
 #include <iostream>
-#include "bstforks.h"
-#include "task4.h"
+#include <vector>
+#include "pyramid.h"
 
 void runTask4() {
-    std::cout << "Введите последовательность целых, заканчивающуюся 0:\n";
-    Node* root = nullptr;
-    int x;
-    while (std::cin >> x && x != 0) insert(root, x);
-
-    std::cout << "Вершины с двумя детьми: ";
-    printForksInOrder(root);
-    std::cout << "\n";
-    destroy(root);
+    std::cout << "=== Задание 4: Пирамида из блоков ===" << std::endl;
+    int n;
+    std::cout << "Введите N (число блоков): ";
+    std::cin >> n;
+    std::vector<Block> blocks(n);
+    for (int i = 0; i < n; ++i) {
+        std::cin >> blocks[i].w >> blocks[i].h;
+    }
+    std::cout << "Максимальная высота пирамиды: "
+              << maxPyramidHeight(blocks) << "\n";
 }
